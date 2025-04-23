@@ -1,0 +1,59 @@
+.contenedor {
+  padding: 16px;
+  padding-bottom: 96px;
+}
+
+.buscador {
+  margin-bottom: 16px;
+  padding: 8px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.tab-btn {
+  padding: 8px;
+  border: 1px solid #ccc;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+.tarjeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #eee;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #fff;
+}
+
+.fila {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-inferior {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px;
+  z-index: 10;
+}
