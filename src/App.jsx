@@ -21,13 +21,33 @@ export default function CryptoApp() {
     );
   };
 
-  const filteredCryptos = cryptos.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const stableCoins = ["tether", "usd-coin", "binance-usd", "dai", "true-usd", "usdd", "paxos-standard"];
 
-  const displayedCryptos = tab === "favorites"
-    ? filteredCryptos.filter((coin) => favorites.includes(coin.id))
-    : filteredCryptos;
+  const filterByTab = () => {
+    let list = cryptos;
+    switch (tab) {
+      case "favorites":
+        list = list.filter((coin) => favorites.includes(coin.id));
+        break;
+      case "top":
+        list = [...list].sort((a, b) => b.market_cap - a.market_cap).slice(0, 20);
+        break;
+      case "gainers":
+        list = [...list].sort((a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h).slice(0, 20);
+        break;
+      case "losers":
+        list = [...list].sort((a, b) => a.price_change_percentage_24h - b.price_change_percentage_24h).slice(0, 20);
+        break;
+      case "stable":
+        list = list.filter((coin) => stableCoins.includes(coin.id));
+        break;
+      default:
+        break;
+    }
+    return list.filter((coin) => coin.name.toLowerCase().includes(search.toLowerCase()));
+  };
+
+  const displayedCryptos = filterByTab();
 
   return (
     <div className="contenedor">
